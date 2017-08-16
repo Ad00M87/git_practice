@@ -1,6 +1,23 @@
-puts 'Learning Git'
+def puts_git(cmd)
+  puts `git #{cmd} -h`
+end
 
-first_name = "Adam"
-last_name = "Kimball"
+def menu
+  puts '1: Enter a Git Command'
+  puts '2: Exit'
+  choice = gets.to_i
+  case choice
+    when 1
+      puts "Enter a git Command"
+      puts_git(gets.strip)
+    when 2
+      puts "Thanks for using the git command"
+      exit
+    else
+      puts "Invalid choice!"
+      menu
+  end
+  menu # made a loop (Recursion)
+end
 
-puts "Hello #{first_name} #{last_name}"
+menu 
